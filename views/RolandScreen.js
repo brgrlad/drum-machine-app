@@ -1,8 +1,8 @@
-import { useEffect, useContext, useState } from "react";
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Audio } from "expo-av";
-import { UserChoiceContext } from "../context/UserChoiceContext";
+
 
 import clap01 from "../assets/sounds/roland/clap01.wav";
 import clap02 from "../assets/sounds/roland/clap02.wav";
@@ -75,8 +75,6 @@ const RolandScreen = () => {
   //RENDER EACH DRUM INSTRUMENT IN THE UI
   let renderInstrument = (instrument, key) => {
 
-    console.log(instrumentArr)
-
 
     return (
       <TouchableOpacity
@@ -96,7 +94,7 @@ const RolandScreen = () => {
     );
   };
 
-  // JUST TESTING THIS
+
 
   return (
     <View style={styles.container}>
@@ -116,21 +114,16 @@ const RolandScreen = () => {
     </View>
 
     );
+
+
+
 };
 
-//  gray
-//  orange
-//  dark gray
-// #ced0cc button color
+
 
 export default RolandScreen;
 
-// try and create a function that will generate the JSX for each drum sound
-
-// perhaps start from an array with the name of the elements and forEach of this elements, render a block of code?
-
-// use flex-wrap: wrap in order to make sure all pads are seen on screen
-
+//COLOR PALLET
 let buttonColor = "#ced0cc";
 let orange = "#dd6e39";
 let gray = "#dbd9d9";
@@ -144,7 +137,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
 
-
   },
 
   rolandWrapper: {
@@ -153,7 +145,6 @@ const styles = StyleSheet.create({
     backgroundColor: gray,
     alignItems: "center",
     justifyContent: "center",
-
 
     display: 'flex',
 
