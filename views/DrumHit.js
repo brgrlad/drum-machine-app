@@ -8,6 +8,8 @@ let arr = ['kick', 'clap', 'hat']
 
 const DrumHit = () => {
 
+  let myText = 'hey'
+
 
 
   return (
@@ -20,7 +22,7 @@ const DrumHit = () => {
     onPressIn={() => playSound("clap")}
   >
     <View title="Play Sound">
-      <Text style={styles.instrumentTitle}>CLAP</Text>
+      <Text style={styles.instrumentTitle}>{myText}</Text>
     </View>
   </TouchableOpacity>
 

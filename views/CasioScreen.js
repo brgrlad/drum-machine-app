@@ -1,28 +1,26 @@
 import { useEffect, useContext, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, ImageBackground } from "react-native";
 import { Audio } from "expo-av";
 import { UserChoiceContext } from "../context/UserChoiceContext";
-
-
 
 
 // // https://www.youtube.com/watch?v=bByJicHMwX8&ab_channel=GenUI
 // // https://reactjsexample.com/a-drum-machine-application-built-using-react/
 
-import clap from "../assets/sounds/clap.wav";
-import closedHat from "../assets/sounds/closed-hat.wav";
-import cowbell from "../assets/sounds/cowbell.wav";
-import crashCymbal from "../assets/sounds/crash-cymbal.wav";
-import kick from "../assets/sounds/kick.wav";
-import metronome from "../assets/sounds/metronome.wav";
-import openHat from "../assets/sounds/open-hat.wav";
-import ride from "../assets/sounds/ride.wav";
-import snare from "../assets/sounds/snare.wav";
-import tom1 from "../assets/sounds/tom1.wav";
-import tom2 from "../assets/sounds/tom2.wav";
-import tom3 from "../assets/sounds/tom3.wav";
-import rimshot from "../assets/sounds/rimshot.wav";
+import clap from "../assets/sounds/casio/clap.wav";
+import closedHat from "../assets/sounds/casio/closed-hat.wav";
+import cowbell from "../assets/sounds/casio/cowbell.wav";
+import crashCymbal from "../assets/sounds/casio/crash-cymbal.wav";
+import kick from "../assets/sounds/casio/kick.wav";
+import metronome from "../assets/sounds/casio/metronome.wav";
+import openHat from "../assets/sounds/casio/open-hat.wav";
+import ride from "../assets/sounds/casio/ride.wav";
+import snare from "../assets/sounds/casio/snare.wav";
+import tom1 from "../assets/sounds/casio/tom1.wav";
+import tom2 from "../assets/sounds/casio/tom2.wav";
+import tom3 from "../assets/sounds/casio/tom3.wav";
+import rimshot from "../assets/sounds/casio/rimshot.wav";
 
 
 export default function CasioScreen() {
@@ -75,9 +73,15 @@ export default function CasioScreen() {
 
   },[])
 
+
+
   return (
     // MAIN CONTAINER
+
+
     <View style={styles.container}>
+
+
 
       <View style={styles.headerWrapper}>
 
@@ -225,9 +229,14 @@ const styles = StyleSheet.create({
     backgroundColor: black,
     alignItems: "center",
     justifyContent: "center",
+
   },
   drumPadRow: {
     flexDirection: "row",
+  },
+  image: {
+
+
   },
   drumPad: {
     borderWidth: 2,
