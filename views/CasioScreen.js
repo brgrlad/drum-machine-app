@@ -1,37 +1,34 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-// AUDIO DOC: https://docs.expo.dev/versions/latest/sdk/audio/
 import { Audio } from "expo-av";
+import { UserChoiceContext } from "../context/UserChoiceContext";
 
-// // on page load sounds get added to pads .... API CALL?
 
-// // is sounds are stored in an array, use arr.map to generate HTML, so to avoid repetition in code
 
-// //each pad will also have its own icon represent its sound: snare, kickdrum, hihat etc
-
-// //sequencer?????
 
 // // https://www.youtube.com/watch?v=bByJicHMwX8&ab_channel=GenUI
 // // https://reactjsexample.com/a-drum-machine-application-built-using-react/
 
-import clap from "../../assets/sounds/clap.wav";
-import closedHat from "../../assets/sounds/closed-hat.wav";
-import cowbell from "../../assets/sounds/cowbell.wav";
-import crashCymbal from "../../assets/sounds/crash-cymbal.wav";
-import kick from "../../assets/sounds/kick.wav";
-import metronome from "../../assets/sounds/metronome.wav";
-import openHat from "../../assets/sounds/open-hat.wav";
-import ride from "../../assets/sounds/ride.wav";
-import snare from "../../assets/sounds/snare.wav";
-import tom1 from "../../assets/sounds/tom1.wav";
-import tom2 from "../../assets/sounds/tom2.wav";
-import tom3 from "../../assets/sounds/tom3.wav";
+import clap from "../assets/sounds/clap.wav";
+import closedHat from "../assets/sounds/closed-hat.wav";
+import cowbell from "../assets/sounds/cowbell.wav";
+import crashCymbal from "../assets/sounds/crash-cymbal.wav";
+import kick from "../assets/sounds/kick.wav";
+import metronome from "../assets/sounds/metronome.wav";
+import openHat from "../assets/sounds/open-hat.wav";
+import ride from "../assets/sounds/ride.wav";
+import snare from "../assets/sounds/snare.wav";
+import tom1 from "../assets/sounds/tom1.wav";
+import tom2 from "../assets/sounds/tom2.wav";
+import tom3 from "../assets/sounds/tom3.wav";
+import rimshot from "../assets/sounds/rimshot.wav";
 
-// map sounds arr and generate async call for each?
 
-export default function DrumPadScreen() {
+export default function CasioScreen() {
+
+
+  const { userSelection } = useContext(UserChoiceContext);
   const [soundObj, setSoundObj] = useState();
 
   async function playSound(id) {
@@ -63,6 +60,8 @@ export default function DrumPadScreen() {
       res = await Audio.Sound.createAsync(tom2);
     } else if (id === "tom3") {
       res = await Audio.Sound.createAsync(tom3);
+    } else if (id === "rimshot") {
+      res = await Audio.Sound.createAsync(rimshot);
     }
 
     setSoundObj(res.sound);
@@ -70,39 +69,22 @@ export default function DrumPadScreen() {
     await res.sound.playAsync();
   }
 
-  // async function playSound() {
 
-  //   console.log('Loading Sound');
+  useEffect(() => {
+    // console.log(userSelection)
 
-  //   const { sound } = await Audio.Sound.createAsync( require(`../../assets/sounds/clap.wav`)
-  //   );
-  //   setSound(sound);
-
-  //   console.log(sound);
-  //   await sound.playAsync();
-  // }
-
-  // const showArr = () => {
-
-  //   arr.map((item) => console.log(arr[1]))
-  // }
-
-  // useEffect(() => {
-  //   return sound
-  //     ? () => {
-  //         console.log('Unloading Sound');
-  //         sound.unloadAsync();
-  //       }
-  //     : undefined;
-  // }, [sound]);
+  },[])
 
   return (
     // MAIN CONTAINER
     <View style={styles.container}>
 
+      <View style={styles.headerWrapper}>
 
-      <Text>CASIO RZ 1</Text>
-      <Text>DIGITAL RYTHM CONTROLLER</Text>
+        <Text style={styles.title}>CASIO RZ 1</Text>
+        <Text style={styles.para}>DIGITAL RYTHM CONTROLLER</Text>
+
+        </View>
 
       <StatusBar style="auto" />
 
@@ -113,7 +95,7 @@ export default function DrumPadScreen() {
           onPressIn={() => playSound("clap")}
         >
           <View title="Play Sound">
-            <Text>Play!</Text>
+            <Text style={styles.instrumentTitle}>CLAP</Text>
           </View>
         </TouchableOpacity>
 
@@ -122,16 +104,17 @@ export default function DrumPadScreen() {
           onPressIn={() => playSound("closedHat")}
         >
           <View title="Play Sound">
-            <Text>Closed Hat</Text>
+            <Text style={styles.instrumentTitle}>CLOSED HAT</Text>
           </View>
-        </TouchableOpacity>
 
+
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.drumPad}
           onPressIn={() => playSound("crashCymbal")}
         >
-          <View>
-            <Text>Crash</Text>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>CYMBAL</Text>
           </View>
         </TouchableOpacity>
 
@@ -142,22 +125,28 @@ export default function DrumPadScreen() {
             style={styles.drumPad}
             onPressIn={() => playSound("kick")}
           >
-            <View></View>
-          </TouchableOpacity>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>KICK DRUM</Text>
+          </View>
+        </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.drumPad}
             onPressIn={() => playSound("metronome")}
           >
-            <View></View>
-          </TouchableOpacity>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>METRONOME</Text>
+          </View>
+        </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.drumPad}
             onPressIn={() => playSound("openHat")}
           >
-            <View></View>
-          </TouchableOpacity>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>OPEN HAT</Text>
+          </View>
+        </TouchableOpacity>
         </View>
 
         <View style={styles.drumPadRow}>
@@ -165,22 +154,28 @@ export default function DrumPadScreen() {
             style={styles.drumPad}
             onPressIn={() => playSound("ride")}
           >
-            <View></View>
-          </TouchableOpacity>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>RIDE</Text>
+          </View>
+        </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.drumPad}
             onPressIn={() => playSound("snare")}
           >
-            <View></View>
-          </TouchableOpacity>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>SNARE</Text>
+          </View>
+        </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.drumPad}
             onPressIn={() => playSound("tom1")}
           >
-            <View></View>
-          </TouchableOpacity>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>TOM 1</Text>
+          </View>
+        </TouchableOpacity>
         </View>
 
         <View style={styles.drumPadRow}>
@@ -188,22 +183,28 @@ export default function DrumPadScreen() {
             style={styles.drumPad}
             onPressIn={() => playSound("tom2")}
           >
-            <View></View>
-          </TouchableOpacity>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>TOM 2</Text>
+          </View>
+        </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.drumPad}
             onPressIn={() => playSound("tom3")}
           >
-            <View></View>
-          </TouchableOpacity>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>TOM 3</Text>
+          </View>
+        </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.drumPad}
-            onPressIn={() => playSound("closedHat")}
+            onPressIn={() => playSound("rimshot")}
           >
-            <View></View>
-          </TouchableOpacity>
+          <View title="Play Sound">
+            <Text style={styles.instrumentTitle}>RIMSHOT</Text>
+          </View>
+        </TouchableOpacity>
         </View>
       </View>
 
@@ -211,9 +212,11 @@ export default function DrumPadScreen() {
   );
 }
 
+
 let blue = '#90ebe9'
 let black = '#424242'
 let gray = '#e2e3de'
+let darkGray = '#626161'
 
 
 const styles = StyleSheet.create({
@@ -227,9 +230,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   drumPad: {
-    // borderWidth: 5,
-    // borderColor: gray,
+    borderWidth: 2,
+    borderColor: gray,
     backgroundColor: 'black',
+
+
 
     width: 100,
     height: 100,
@@ -243,5 +248,28 @@ const styles = StyleSheet.create({
     shadowOpacity: 100,
     shadowRadius: 0.3,
     elevation: 10,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+
   },
+  title:{
+    fontSize: 40,
+    color: blue,
+  },
+  para: {
+    color: gray,
+  },
+  headerWrapper: {
+    marginBottom: 30,
+
+  },
+  instrumentTitle: {
+    color: darkGray,
+    fontSize: 10,
+
+
+  }
 });
+
