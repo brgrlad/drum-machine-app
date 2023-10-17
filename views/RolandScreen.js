@@ -84,12 +84,10 @@ const RolandScreen = () => {
         style={styles.drumPad}
         onPressIn={() => playSound(instrument)}
       >
-        <View title="Play Sound">
+        {/* <View title="Play Sound">
 
-          {/* ADD INSTRUMENT NAME HERE??? */}
+        </View> */}
 
-          <Text style={styles.instrumentTitle}>{instrument}</Text>
-        </View>
       </TouchableOpacity>
     );
   };
@@ -97,13 +95,15 @@ const RolandScreen = () => {
 
 
   return (
+    //MAIN WRAPPER
     <View style={styles.container}>
-    <View style={styles.headerWrapper}>
 
-    <Text style={styles.title}>ROLAND TR-909</Text>
-    <Text style={styles.para}>RYTHM COMPOSER</Text>
 
-    </View>
+      <View style={styles.headerWrapper}>
+        <Text style={styles.title}>ROLAND TR-909</Text>
+        <Text style={styles.para}>RYTHM COMPOSER</Text>
+      </View>
+
 
   <StatusBar style="auto" />
 
@@ -137,17 +137,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
 
+
   },
 
   rolandWrapper: {
 
-
     backgroundColor: gray,
     alignItems: "center",
     justifyContent: "center",
-
     display: 'flex',
-
     borderColor: 'black',
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -178,6 +176,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     color: darkGray,
+
+
   },
   para: {
     color: darkGray,
@@ -185,6 +185,7 @@ const styles = StyleSheet.create({
   headerWrapper: {
     marginBottom: 30,
     color: darkGray,
+    alignItems: 'center',
 
   },
   instrumentTitle: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import HomeScreen from '../views/HomeScreen'
 import RolandScreen from '../views/RolandScreen';
@@ -12,36 +13,48 @@ const Navigator = () => {
 
 
   return (
+    <Tab.Navigator
 
+    initialRouteName="Home"
+      screenOptions={{
 
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-
-
-      <Tab.Screen name="CasioScreen" component={CasioScreen} options={{ tabBarVisible: false }} />
-      <Tab.Screen name="RolandScreen" component={RolandScreen} options={{ tabBarVisible: false }} />
-
-
+        tabBarStyle: style.tabBar, // Apply the tabBar style from your StyleSheet
+        tabBarLabelStyle: style.tabBarLabel, // Apply the tabBarLabel style
+        tabBarActiveTintColor: 'white',
+        tabBarInactiveTintColor: 'black',
+      }}
+    >
+        <Tab.Screen name="CasioScreen" component={CasioScreen} />
+        <Tab.Screen name="Home" component={HomeScreen}/>
+        <Tab.Screen name="RolandScreen" component={RolandScreen} />
 
 
     </Tab.Navigator>
+
+    // <Tab.Navigator screenOptions={{ backgroundColor: 'tomato' }}>
+    //     <Tab.Screen name="CasioScreen" component={CasioScreen} />
+    //     <Tab.Screen name="Home" component={HomeScreen}/>
+    //     <Tab.Screen name="RolandScreen" component={RolandScreen} />
+    // </Tab.Navigator>
   );
 };
 
-{/* <Tab.Screen name="Home" component={HomeScreen} />
-<Tab.Screen name="CasioScreen" component={CasioScreen} options={{ tabBarVisible: false }} />
-
-
-<Tab.Screen name="RolandScreen" component={RolandScreen} />
-</Tab.Navigator> */}
 
 export default Navigator;
 
-// return (
-//   <NavigationContainer>
-//     <Stack.Navigator>
-//       <Stack.Screen name="Home" component={HomeScreen} />
-//       <Stack.Screen name="Detail" component={DetailScreen} />
-//     </Stack.Navigator>
-//   </NavigationContainer>
-// );
+const style = StyleSheet.create({
+
+  container: {
+    backgroundColor: 'black',
+
+  },
+  tabBar: {
+    backgroundColor: 'gray',
+
+
+
+  },
+
+
+
+})

@@ -94,7 +94,7 @@ export default function CasioScreen() {
         <View title="Play Sound">
 
 
-          <Text style={styles.instrumentTitle}>{instrument}</Text>
+          {/* <Text style={styles.instrumentTitle}>{instrument}</Text> */}
         </View>
       </TouchableOpacity>
     );
@@ -137,12 +137,12 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "center",
-
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
 
   },
+
 
   drumPad: {
     borderWidth: 2,
@@ -167,10 +167,9 @@ const styles = StyleSheet.create({
   },
   headerWrapper: {
     backgroundColor: 'white',
-
-
     textAlign: 'center',
     backgroundColor: 'pink',
+    marginBottom: 30,
   },
   title: {
     fontSize: 40,
@@ -180,7 +179,8 @@ const styles = StyleSheet.create({
     color: gray,
   },
   headerWrapper: {
-    marginBottom: 30,
+    marginTop: 50,
+    alignItems: 'center',
   },
   instrumentTitle: {
     color: darkGray,
