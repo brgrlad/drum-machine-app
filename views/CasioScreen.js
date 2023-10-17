@@ -1,16 +1,10 @@
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Audio } from "expo-av";
 import { UserChoiceContext } from "../context/UserChoiceContext";
 
-
-
+// AUDIO FILES
 import clap from "../assets/sounds/casio/clap.wav";
 import closedHat from "../assets/sounds/casio/closed-hat.wav";
 import cowbell from "../assets/sounds/casio/cowbell.wav";
@@ -24,6 +18,7 @@ import tom1 from "../assets/sounds/casio/tom1.wav";
 import tom2 from "../assets/sounds/casio/tom2.wav";
 import rimshot from "../assets/sounds/casio/rimshot.wav";
 
+//INSTRUMENT ARRAY
 let instrumentArr = [
   clap,
   closedHat,
@@ -40,12 +35,10 @@ let instrumentArr = [
 ];
 
 export default function CasioScreen() {
-
   const { userSelection } = useContext(UserChoiceContext);
   const [soundObj, setSoundObj] = useState();
 
   async function playSound(id) {
-
     let res;
 
     if (id === clap) {
@@ -79,30 +72,18 @@ export default function CasioScreen() {
     await res.sound.playAsync();
   }
 
-  useEffect(() => {
-    console.log(clap)
-  }, []);
-
   let renderInstrument = (instrument, key) => {
-
     return (
       <TouchableOpacity
         key={key}
         style={styles.drumPad}
         onPressIn={() => playSound(instrument)}
-      >
-        <View title="Play Sound">
-
-
-          {/* <Text style={styles.instrumentTitle}>{instrument}</Text> */}
-        </View>
-      </TouchableOpacity>
+      ></TouchableOpacity>
     );
   };
 
   return (
     <View style={styles.container}>
-
       <View style={styles.headerWrapper}>
         <Text style={styles.title}>CASIO RZ-1</Text>
         <Text style={styles.para}>RYTHM COMPOSER</Text>
@@ -127,32 +108,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: black,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center",
-    textAlign: 'center',
+    textAlign: "center",
   },
   casioWrapper: {
-
     alignItems: "center",
     justifyContent: "center",
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
-
-
   drumPad: {
     borderWidth: 2,
     borderColor: gray,
     backgroundColor: "black",
-
     width: 100,
     height: 100,
     margin: 12,
-
     shadowColor: blue,
     shadowOffset: {
       width: 6,
@@ -166,9 +141,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerWrapper: {
-    backgroundColor: 'white',
-    textAlign: 'center',
-    backgroundColor: 'pink',
+    backgroundColor: "white",
+    textAlign: "center",
+    backgroundColor: "pink",
     marginBottom: 30,
   },
   title: {
@@ -180,7 +155,7 @@ const styles = StyleSheet.create({
   },
   headerWrapper: {
     marginTop: 50,
-    alignItems: 'center',
+    alignItems: "center",
   },
   instrumentTitle: {
     color: darkGray,

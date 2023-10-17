@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Audio } from "expo-av";
 
-
+//AUDIO FILES
 import clap01 from "../assets/sounds/roland/clap01.wav";
 import clap02 from "../assets/sounds/roland/clap02.wav";
 import closedHat from "../assets/sounds/roland/closed-hat.wav";
@@ -17,6 +17,7 @@ import rimShot from "../assets/sounds/roland/rim-shot.wav";
 import shaker from "../assets/sounds/roland/shaker.wav";
 import snare from "../assets/sounds/roland/snare.wav";
 
+//INSTRUMENT ARRAY
 let instrumentArr = [
   clap01,
   clap02,
@@ -33,7 +34,6 @@ let instrumentArr = [
 ];
 
 const RolandScreen = () => {
-
   const [soundObj, setSoundObj] = useState();
 
   async function playSound(id) {
@@ -74,52 +74,30 @@ const RolandScreen = () => {
 
   //RENDER EACH DRUM INSTRUMENT IN THE UI
   let renderInstrument = (instrument, key) => {
-
-
     return (
       <TouchableOpacity
-
         key={key}
-
         style={styles.drumPad}
         onPressIn={() => playSound(instrument)}
-      >
-        {/* <View title="Play Sound">
-
-        </View> */}
-
-      </TouchableOpacity>
+      ></TouchableOpacity>
     );
   };
 
-
-
   return (
-    //MAIN WRAPPER
     <View style={styles.container}>
-
-
       <View style={styles.headerWrapper}>
         <Text style={styles.title}>ROLAND TR-909</Text>
         <Text style={styles.para}>RYTHM COMPOSER</Text>
       </View>
 
+      <StatusBar style="auto" />
 
-  <StatusBar style="auto" />
-
-    <View style={styles.rolandWrapper}>
-
-    {instrumentArr.map((item, index) => renderInstrument(item, index))}
+      <View style={styles.rolandWrapper}>
+        {instrumentArr.map((item, index) => renderInstrument(item, index))}
+      </View>
     </View>
-    </View>
-
-    );
-
-
-
+  );
 };
-
-
 
 export default RolandScreen;
 
@@ -130,37 +108,30 @@ let gray = "#dbd9d9";
 let darkGray = "#2a2c2b";
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     backgroundColor: gray,
     alignItems: "center",
     justifyContent: "center",
-
-
   },
 
   rolandWrapper: {
-
     backgroundColor: gray,
     alignItems: "center",
     justifyContent: "center",
-    display: 'flex',
-    borderColor: 'black',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-
+    display: "flex",
+    borderColor: "black",
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
 
   drumPad: {
     borderWidth: 2,
     borderColor: darkGray,
     backgroundColor: buttonColor,
-
     width: 100,
     height: 100,
     margin: 12,
-
     shadowColor: orange,
     shadowOffset: {
       width: 6,
@@ -176,8 +147,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     color: darkGray,
-
-
   },
   para: {
     color: darkGray,
@@ -185,11 +154,9 @@ const styles = StyleSheet.create({
   headerWrapper: {
     marginBottom: 30,
     color: darkGray,
-    alignItems: 'center',
-
+    alignItems: "center",
   },
   instrumentTitle: {
-
     fontSize: 10,
   },
 });
